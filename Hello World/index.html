@@ -1,0 +1,81 @@
+<html>
+<script src="//d3js.org/d3.v4.js"></script>
+<body>
+
+<h1>DATA 608 - Assignment 5</h1>
+<h2>Introduction to Javascript</h2>
+
+<br>
+<p>Enter a word or phrase to reverse</p>
+
+<script>
+
+function reverseString(str) {
+  var reverseStr = str.split("").reverse().join("");
+  return reverseStr; 
+};
+
+function calc(){
+  var t = document.getElementById("target");
+  t.innerHTML = reverseString(document.getElementById("str").value);
+};
+
+</script>
+
+<form>
+  <input id="str" type="text">
+  <input type="button" value= "Reverse" onclick="calc()">
+</form>
+
+<p id="target"></p>
+
+<br>
+
+
+<p>Multiplication Table</p>
+
+<form>
+  <input id="num" type="number" size="4">
+  <input type="button" value="Generate table" onclick="generateTable()">
+</form>
+
+<script>
+
+function generateTable() {
+
+  var num = document.getElementById("num").value;
+  var body = document.getElementsByTagName("body")[0];
+
+  var tbl = document.createElement("table");
+  var tblBody = document.createElement("tbody");
+
+  var k = 1
+  for (var i = 0; i < 5; i++) {
+
+    var row = document.createElement("tr");
+
+    for (var j = 0; j < 4; j++) {
+      // Create a <td> element and a text node, make the text
+      // node the contents of the <td>, and put the <td> at
+      // the end of the table row
+      var cell = document.createElement("td");
+      var cellText = document.createTextNode(num*k);
+      cell.appendChild(cellText);
+      row.appendChild(cell);
+      k++
+    }
+
+    tblBody.appendChild(row);
+  }
+
+  // put the <tbody> in the <table>
+  tbl.appendChild(tblBody);
+  // appends <table> into <body>
+  body.appendChild(tbl);
+ 
+}
+
+</script>
+
+</body>
+</html>
